@@ -13,4 +13,4 @@ jobs:
       - name: Install 
         run: npm ci #en lugar de usar npm install, npm nos recomienda usar npm ci para servidores de entornos de integración continua
       - name: run tests
-        run: npm run test -- --no-watch --code-coverage --browsers=ChromeHeadlessCI #no escucha continua, generación de code coverage
+        run: npx ng test --no-watch --code-coverage --browsers=ChromeHeadlessCI #no escucha continua, generación de code coverage

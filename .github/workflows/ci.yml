@@ -1,0 +1,16 @@
+name: CI for Angular
+on: push #por cada commit que hagamos, aunque puede ser mas especifico, ej: cada rama
+jobs:
+  unit-test: #no importa el nombre, podemos tener varios jobs
+    runs-on: ubuntu-latest #podemos usar otro SO o versión de Ubuntu.
+    steps:
+      - name: Clone #el nombre no es necesario, solo es por si deseamos nombrar nuestra acción
+        uses: actions/checkout@v2 #copiará el codigo de nuestro proyecto, como un git clone
+      - name: Node Setup
+        uses: actions/setup-node@v2
+        with: 
+          node-version: 14.x
+      - name: Install 
+        run: npm ci #en lugar de usar npm install, npm nos recomienda usar npm ci para servidores de entornos de integración continua
+      - name: run tests
+        run: ng test --no-watch --code-coverage --browsers=ChromeHeadlessCI #no escucha continua, generación de code coverage
